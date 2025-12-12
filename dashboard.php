@@ -1,5 +1,11 @@
 <?php 
+session_start();
 include 'koneksi.php';
+
+if(!isset($_SESSION['login'])||$_SESSION['login'] != true){
+    header("location: form_login.php");
+}
+
 $sql = "SELECT * FROM karyawan ORDER BY id DESC";
 $result = $conn->query($sql);
 ?>
@@ -91,7 +97,7 @@ $result = $conn->query($sql);
     <h2>MENU</h2>
     <a href="#" onclick="showTable()">📋 Lihat Data</a>
     <a href="#" onclick="showForm()">➕ Tambah Data</a>
-    <a href="#"></a>
+    <a href="logout.php">LOGOUT</a>
 </div>
 
 <!-- CONTENT -->
